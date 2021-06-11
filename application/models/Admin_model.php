@@ -29,9 +29,12 @@ class Admin_model extends CI_Model
         $data = [
             'nidn' => $this->input->post('nidn', true),
             'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
+            'pob' => $this->input->post('pob'),
+            'dob' => $this->input->post('dob'),
             'address' => $this->input->post('address'),
             'gender' => $this->input->post('gender'),
+            'religion' => $this->input->post('religion'),
+            'email' => $this->input->post('email'),
             'telephone' => $this->input->post('telephone'),
             'image' => 'default.jpg',
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),

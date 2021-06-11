@@ -67,12 +67,13 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|is_unique[user.nidn]', [
             'is_unique' => 'This NIDN is already registered!'
         ]);
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim');
+        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim');
+        $this->form_validation->set_rules('address', 'Address', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'This email is already registered!'
         ]);
-        $this->form_validation->set_rules('address', 'Address', 'required|trim');
-        $this->form_validation->set_rules('gender', 'Gender', 'required|trim');
         $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[4]|matches[password2]', [
             'matches' => 'password dont match!',

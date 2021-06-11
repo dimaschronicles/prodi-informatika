@@ -29,8 +29,7 @@
                                     <td><?= $a['email']; ?></td>
                                     <td><i>Tidak dapat dilihat</i></td>
                                     <td>
-                                        <a href="" class="badge badge-primary">Detail</a>
-                                        <a href="" class="badge badge-danger">Hapus</a>
+                                        <a href="" class="btn btn-primary">Detail</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

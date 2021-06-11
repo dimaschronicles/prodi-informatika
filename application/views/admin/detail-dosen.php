@@ -1,22 +1,46 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
-    <div class="card mb-3 shadow" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="<?= base_url('assets/img/profile/') . $dosen['image']; ?>" class="card-img">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $dosen['nidn']; ?></h5>
-                    <p class="card-text"><b>Name</b> : <?= $dosen['name']; ?></p>
-                    <p class="card-text"><b>Email</b> : <?= $dosen['email']; ?></p>
-                    <p class="card-text"><b>Address</b> : <?= $dosen['address']; ?></p>
-                    <p class="card-text"><b>Gender</b> : <?= $dosen['gender']; ?></p>
-                    <p class="card-text"><b>Telephone</b> : <?= $dosen['gender']; ?></p>
+    <div class="card shadow">
+        <h3 class="card-header"><b><?= $title; ?></b></h3>
+        <div class="card-body">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="<?= base_url('assets/img/profile/') . $dosen['image']; ?>" class="card-img">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><b>NIDN</b></td>
+                                    <td><?= $dosen['nidn']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Nama</b></td>
+                                    <td><?= $dosen['name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>No. Hp</b></td>
+                                    <td><?= $dosen['telephone']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Jenis Kelamin</b></td>
+                                    <td><?= $dosen['gender']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email</b></td>
+                                    <td><?= $dosen['email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Alamat</b></td>
+                                    <td><?= $dosen['address']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $dosen['date_created']); ?></small></p> -->
+                        <a href="<?= base_url('admin/dosen'); ?>" class="btn btn-dark">Kembali</a>
+                    </div>
                 </div>
             </div>
         </div>

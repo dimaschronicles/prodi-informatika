@@ -37,6 +37,16 @@ class User extends CI_Controller
         $this->form_validation->set_rules('address', 'Address', 'required|trim');
         $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
 
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim');
+        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim');
+        $this->form_validation->set_rules('address', 'Address', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'is_unique' => 'This email is already registered!'
+        ]);
+        $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
+
+
         if ($this->form_validation->run() == false) {
             // template view / tampilan
             $this->load->view('templates/header', $data);
