@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <?= form_open_multipart('admin/editprofileadmin'); ?>
+            <?= form_open_multipart('user/edit'); ?>
             <div class="form-group row">
                 <label for="nidn" class="col-sm-2 col-form-label">NIDN</label>
                 <div class="col-sm-10">
@@ -96,7 +96,7 @@
 
             <div class="form-group row justify-content-end">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>
 

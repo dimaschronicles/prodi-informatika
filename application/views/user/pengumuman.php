@@ -14,6 +14,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Judul</th>
+                            <th scope="col">Uploader</th>
                             <th scope="col">Tanggal</th>
                         </tr>
                     </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td><a href="<?= base_url(); ?>user/detailpengumuman/<?= $a['id']; ?>"><?= $a['title']; ?></a></td>
+                                <td><?= $a['uploader']; ?></td>
                                 <td><?= $a['date_creation']; ?></td>
                             </tr>
                             <?php $i++; ?>

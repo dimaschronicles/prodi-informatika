@@ -21,6 +21,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Judul</th>
                             <th scope="col">Tanggal</th>
+                            <th scope="col">Uploader</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $a['title']; ?></td>
                                 <td><?= $a['date_creation']; ?></td>
+                                <td><?= $a['uploader']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>admin/detailpengumuman/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
                                     <a href="<?= base_url(); ?>admin/editpengumuman/<?= $a['id']; ?>" class="badge badge-warning">Edit</a>

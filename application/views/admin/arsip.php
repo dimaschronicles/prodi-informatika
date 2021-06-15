@@ -22,6 +22,7 @@
                             <th scope="col">Judul</th>
                             <th scope="col">File</th>
                             <th scope="col">Tanggal</th>
+                            <th scope="col">Uploader</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                                         <?php endif; ?>
                                     <?php endfor; ?>
                                 </td>
+                                <td><?= $a['uploader']; ?></td>
                                 <td><?= $a['date_created']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>admin/editarsip/<?= $a['id_file']; ?>" class="badge badge-warning">Edit</a>

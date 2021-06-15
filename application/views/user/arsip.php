@@ -15,6 +15,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Judul</th>
                             <th scope="col">Tanggal</th>
+                            <th scope="col">Uploader</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                                     <th scope="row"><?= $i; ?></th>
                                     <td><?= $a['title']; ?></td>
                                     <td><?= $a['date_created']; ?></td>
+                                    <td><?= $a['uploader']; ?></td>
                                     <td><a href="<?= base_url(); ?>user/detailarsip/<?= $a['id_file']; ?>" class="btn btn-primary">Detail</a></td>
                                 </tr>
                                 <?php $i++; ?>

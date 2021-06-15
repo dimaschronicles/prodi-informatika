@@ -49,6 +49,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" name="checkall" id="checkall" onClick="check_uncheck_checkbox(this.checked);">
+                                    <label class="form-check-label"><b>Pilih Semua</b></label>
+                                </div>
+
                                 <?php foreach ($dosen as $d) : ?>
                                     <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="id_dosen[]" name="id_dosen[]" value="<?= $d['id_user']; ?>">
@@ -57,7 +62,7 @@
                                 <?php endforeach; ?>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -99,4 +104,16 @@
         });
 
     });
+
+    function check_uncheck_checkbox(isChecked) {
+        if (isChecked) {
+            $('input[name="id_dosen[]"]').each(function() {
+                this.checked = true;
+            });
+        } else {
+            $('input[name="id_dosen[]"]').each(function() {
+                this.checked = false;
+            });
+        }
+    }
 </script>

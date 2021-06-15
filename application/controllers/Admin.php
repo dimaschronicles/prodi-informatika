@@ -335,7 +335,7 @@ class Admin extends CI_Controller
 
                     $this->db->set('password', $password_hash);
                     $this->db->where('nidn', $this->session->userdata('nidn'));
-                    $this->db->update('dosen');
+                    $this->db->update('user');
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                         Password changed!</div>');
