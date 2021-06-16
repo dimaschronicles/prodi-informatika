@@ -51,8 +51,8 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
-                    redirect('admin');
-                } else if ($user['role'] == 2) {
+                    redirect('super');
+                } else if ($user['role'] == 3) {
                     redirect('user');
                 } else {
                     redirect('admin');
@@ -81,5 +81,10 @@ class Auth extends CI_Controller
     public function blocked()
     {
         $this->load->view('auth/blocked');
+    }
+
+    public function blocked_admin()
+    {
+        $this->load->view('auth/blocked-admin');
     }
 }

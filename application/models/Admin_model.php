@@ -10,7 +10,7 @@ class Admin_model extends CI_Model
 
     public function getDataAdmin()
     {
-        return $this->db->get_where('user', ['role' => '1'])->result_array();
+        return $this->db->get_where('user', ['role' => '2'])->result_array();
     }
 
     public function getCountDosen()
@@ -20,7 +20,7 @@ class Admin_model extends CI_Model
 
     public function getAllDosen()
     {
-        $query = 'SELECT * FROM `user` WHERE `role`=2 ORDER BY `user`.`nidn` ASC';
+        $query = 'SELECT * FROM `user` WHERE `role`=3 ORDER BY `user`.`nidn` ASC';
         return $this->db->query($query)->result_array();
     }
 
@@ -38,7 +38,7 @@ class Admin_model extends CI_Model
             'telephone' => $this->input->post('telephone'),
             'image' => 'default.jpg',
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'role' => 2,
+            'role' => 3,
             'date_created' => time()
         ];
 

@@ -22,7 +22,7 @@ class Admin extends CI_Controller
         // template view / tampilan
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
@@ -35,7 +35,7 @@ class Admin extends CI_Controller
         $data['admin'] = $this->admin->getDataAdmin();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/admin-page', $data);
         $this->load->view('templates/footer');
     }
@@ -53,7 +53,7 @@ class Admin extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/dosen', $data);
         $this->load->view('templates/footer');
     }
@@ -84,7 +84,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/add-dosen', $data);
             $this->load->view('templates/footer');
         } else {
@@ -110,7 +110,7 @@ class Admin extends CI_Controller
         $data['dosen'] = $this->admin->detailDosen($id);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/detail-dosen', $data);
         $this->load->view('templates/footer');
     }
@@ -123,7 +123,7 @@ class Admin extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/pengumuman', $data);
         $this->load->view('templates/footer');
     }
@@ -140,7 +140,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/add-pengumuman', $data);
             $this->load->view('templates/footer');
         } else {
@@ -173,7 +173,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/edit-pengumuman', $data);
             $this->load->view('templates/footer');
         } else {
@@ -191,7 +191,7 @@ class Admin extends CI_Controller
         $data['announcement'] = $this->admin->detailPengumuman($id);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/detail-pengumuman', $data);
         $this->load->view('templates/footer');
     }
@@ -209,7 +209,7 @@ class Admin extends CI_Controller
         $data['arsip'] = $this->admin->getAllArsip();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar-admin', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/arsip', $data);
         $this->load->view('templates/footer');
     }
@@ -228,7 +228,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/add-arsip', $data);
             $this->load->view('templates/footer');
         } else {
@@ -263,7 +263,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/edit-arsip', $data);
             $this->load->view('templates/footer');
         } else {
@@ -289,7 +289,7 @@ class Admin extends CI_Controller
             // template view / tampilan
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/edit-profile-admin', $data);
             $this->load->view('templates/footer');
         } else {
@@ -313,7 +313,7 @@ class Admin extends CI_Controller
             // template view / tampilan
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar-admin', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/topbar-admin', $data);
             $this->load->view('admin/change-password', $data);
             $this->load->view('templates/footer');
         } else {
