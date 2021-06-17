@@ -60,7 +60,7 @@ class Admin_model extends CI_Model
         $keyword = $this->input->post('keyword', true);
         $this->db->like('nidn', $keyword);
         $this->db->or_like('name', $keyword);
-        return $this->db->get_where('user', ['role' => '2'])->result_array();
+        return $this->db->get_where('user', ['role' => '3'])->result_array();
     }
 
     public function editProfileAdmin()
@@ -295,6 +295,14 @@ class Admin_model extends CI_Model
             ];
             $this->db->insert('user_arsip', $data);
         }
+
+        // simple algoritm
+        // kirim ke masing masing dosen email yang diceklis & email yg didatabase harus email yang aktif
+
+        $email = $this->db->query('SELECT id_user, name, email FROM user WHERE role=3')->result_array();
+
+        // cek apakah email dosen yang diceklis ada di database user dengan nama email yang sama 
+        // jika ada maka kirim ke masing masing email dosen yang diceklist
     }
 
     // delete arsip

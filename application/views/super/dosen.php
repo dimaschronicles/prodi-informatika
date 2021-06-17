@@ -12,7 +12,7 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <a href="<?= base_url('admin/adddosen'); ?>" class="btn btn-primary">Tambah Data Dosen</a>
+                    <a href="<?= base_url('super/adddosen'); ?>" class="btn btn-primary">Tambah Data Dosen</a>
 
                     <div class="row mt-3">
                         <div class="col-md-6">
@@ -53,10 +53,27 @@
                                     <td><?= $d['nidn']; ?></td>
                                     <td><?= $d['name']; ?></td>
                                     <td>
-                                        <a href="<?= base_url(); ?>admin/detaildosen/<?= $d['id_user']; ?>" class="badge badge-primary">Detail</a>
-                                        <a href="<?= base_url(); ?>admin/deletedosen/<?= $d['id_user']; ?>" onclick=" return confirm('Delete this data?')" class=" badge badge-danger">Delete</a>
+                                        <a href="<?= base_url(); ?>super/detaildosen/<?= $d['id_user']; ?>" class="badge badge-primary">Detail</a>
+                                        <a href="" class="badge badge-danger" data-toggle="modal" data-target="#exampleModal">Hapus</a>
                                     </td>
                                 </tr>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Apakah data ini akan dihapus?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                                <a href="<?= base_url(); ?>super/deletedosen/<?= $d['id_user']; ?>" class="btn btn-primary">Ya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>

@@ -14,9 +14,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Foto</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -25,11 +25,11 @@
                             <?php foreach ($admin as $a) : ?>
                                 <tr>
                                     <th scope="row"><?= $i; ?></th>
+                                    <td><img src="<?= base_url('assets/img/profile/') . $a['image']; ?>" class="img-thumbnail" width="120px"></td>
                                     <td><?= $a['name']; ?></td>
                                     <td><?= $a['email']; ?></td>
-                                    <td><i>Tidak dapat dilihat</i></td>
                                     <td>
-                                        <a href="" class="btn btn-primary">Detail</a>
+                                        <a href="" class="badge badge-primary">Detail</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

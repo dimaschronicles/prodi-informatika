@@ -6,7 +6,7 @@
     <!-- Show Data Menu -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('admin/addarsip'); ?>" class="m-0 btn btn-primary">Buat Arsip</a>
+            <a href="<?= base_url('super/addarsip'); ?>" class="m-0 btn btn-primary">Buat Arsip</a>
         </div>
 
         <div class="card-body">
@@ -43,11 +43,28 @@
                                 <td><?= $a['date_created']; ?></td>
                                 <td><?= $a['uploader']; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>admin/editarsip/<?= $a['id_file']; ?>" class="badge badge-warning">Edit</a>
-                                    <a href="<?= base_url(); ?>admin/deletearsip/<?= $a['id_file']; ?>" class="badge badge-danger">Hapus</a>
+                                    <a href="<?= base_url(); ?>super/editarsip/<?= $a['id_file']; ?>" class="badge badge-warning">Edit</a>
+                                    <a href="" class="badge badge-danger" data-toggle="modal" data-target="#exampleModal">Hapus</a>
                                 </td>
                             </tr>
-                            <?php $j++; ?>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Apakah data ini akan dihapus?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                            <a href="<?= base_url(); ?>super/deletearsip/<?= $a['id_file']; ?>" class="btn btn-primary">Ya</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php $i++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

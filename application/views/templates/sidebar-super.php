@@ -14,7 +14,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Administrator
+        Super Administrator
     </div>
 
     <!-- Nav Item - Dashboard -->

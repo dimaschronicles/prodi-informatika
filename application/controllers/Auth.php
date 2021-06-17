@@ -82,9 +82,4 @@ class Auth extends CI_Controller
     {
         $this->load->view('auth/blocked');
     }
-
-    public function blocked_admin()
-    {
-        $this->load->view('auth/blocked-admin');
-    }
 }

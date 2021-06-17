@@ -9,7 +9,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <form action="<?= base_url('admin/changepassword'); ?>" method="POST">
+            <form action="<?= base_url('super/changepassword'); ?>" method="POST">
                 <div class="form-group">
                     <label for="current_password">Current Password</label>
                     <input type="password" class="form-control" id="current_password" name="current_password">

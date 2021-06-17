@@ -221,6 +221,11 @@ class Admin extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
         $data['dosen'] = $this->admin->getAllDosen();
 
+        // $email = $this->db->query('SELECT id_user, name, email FROM user WHERE role=3')->result_array();
+        // var_dump($email);
+        // die;
+        // result : dimas@gmail.com
+
         $this->form_validation->set_rules('title', 'Judul', 'required|trim');
         $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
         $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');

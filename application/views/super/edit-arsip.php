@@ -4,7 +4,7 @@
     <div class="card shadow">
         <h3 class="card-header"><b><?= $title; ?></b></h3>
         <div class="card-body">
-            <form action="<?= base_url('admin/editarsip'); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url('super/editarsip'); ?>" method="POST" enctype="multipart/form-data">
 
                 <div id="dynamic_field">
                     <input type="hidden" name="id" value="<?= $arsip['id_file']; ?>">
@@ -79,7 +79,7 @@
 
                 <div class="class-footer">
                     <button type="submit" class="btn btn-primary">Edit Arsip</button>
-                    <a href="<?= base_url('admin/arsip'); ?>" class="btn btn-secondary">Kembali</a>
+                    <a href="<?= base_url('super/arsip'); ?>" class="btn btn-secondary">Kembali</a>
                 </div>
             </form>
         </div>
