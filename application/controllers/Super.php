@@ -46,11 +46,6 @@ class Super extends CI_Controller
         $data['title'] = 'Tambah Data Admin';
         $data['user'] = $this->admin->getDosenByNidn();
 
-        $a = 'SELECT email FROM user WHERE role=3';
-        $b = $this->db->query($a)->result_array();
-        var_dump($b);
-        die;
-
         // validasi
         $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|is_unique[user.nidn]', [
             'is_unique' => 'This NIDN is already registered!'

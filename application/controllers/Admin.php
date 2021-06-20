@@ -221,10 +221,23 @@ class Admin extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
         $data['dosen'] = $this->admin->getAllDosen();
 
-        // $email = $this->db->query('SELECT id_user, name, email FROM user WHERE role=3')->result_array();
-        // var_dump($email);
+        $user = 'Anggie Feb,Aji S,Refri Riyanto';
+        $name = explode(',', $user);
+        // var_dump($name);
         // die;
-        // result : dimas@gmail.com
+        // array(3) { [0]=> string(10) "Anggie Feb" [1]=> string(5) "Aji S" [2]=> string(13) "Refri Riyanto" }
+
+
+        $dosen['dosen'] = $this->db->query('SELECT name, email FROM user WHERE role=3 ORDER BY nidn ASC')->result_array();
+        $columName = array_column($dosen['dosen'], 'name');
+        // $columEmail = array_column($dosen['dosen'], 'email');
+        // var_dump($columName);
+        // die;
+        // array(3) { [0]=> string(10) "Anggie Feb"[1]=> string(5) "Aji S" [2]=> string(13) "Refri Riyanto" }
+
+        // $result = array_intersect($columName, $name);
+        // var_dump($result);
+        // die;
 
         $this->form_validation->set_rules('title', 'Judul', 'required|trim');
         $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');

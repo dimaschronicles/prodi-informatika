@@ -217,7 +217,7 @@ class Admin_model extends CI_Model
     {
         // return $this->db->get_where('user_file', ['id_file' => $id])->row_array();
 
-        $query = "SELECT *,(SELECT GROUP_CONCAT(name) FROM user_arsip x LEFT JOIN user y ON x.id_user=y.id_user WHERE x.id_file=user_file.id_file) as name FROM user_file WHERE id_file='$id' ORDER BY date_created DESC";
+        $query = "SELECT *,(SELECT GROUP_CONCAT(name) FROM user_arsip x LEFT JOIN user y ON x.id_user=y.id_user WHERE x.id_file=user_file.id_file) as name, email FROM user_file WHERE id_file='$id' ORDER BY date_created DESC";
 
         // test
         // $a = $this->db->query($query)->result_array();
@@ -238,6 +238,13 @@ class Admin_model extends CI_Model
         // die;
 
         return $this->db->query($query)->result_array();
+    }
+
+    public function getEmail($id)
+    {
+        $query = "SELECT *,(SELECT GROUP_CONCAT(email) FROM user_arsip x LEFT JOIN user y ON x.id_user=y.id_user WHERE x.id_file=user_file.id_file) as email FROM user_file WHERE id_file='$id' ORDER BY date_created DESC";
+
+        return $this->db->query($query)->row_array();
     }
 
     public function getCountArsip()
@@ -296,13 +303,35 @@ class Admin_model extends CI_Model
             $this->db->insert('user_arsip', $data);
         }
 
-        // simple algoritm
-        // kirim ke masing masing dosen email yang diceklis & email yg didatabase harus email yang aktif
+        $user['user'] = $this->getEmail($id_file);
+        $email = explode(',', $user['user']['email']);
 
-        $email = $this->db->query('SELECT id_user, name, email FROM user WHERE role=3')->result_array();
+        // $config = [
+        //     'protocol' => 'smtp',
+        //     'smtp_host' => 'ssl://smtp.googlemail.com',
+        //     'smtp_user' => 'prodiifamikompwt@gmail.com',
+        //     'smtp_pass' => 'akunbuzzer123',
+        //     'smtp_port' => '465',
+        //     'mailtype' => 'html',
+        //     'charset' => 'utf-8',
+        //     'newline' => "\r\n",
+        // ];
 
-        // cek apakah email dosen yang diceklis ada di database user dengan nama email yang sama 
-        // jika ada maka kirim ke masing masing email dosen yang diceklist
+        $this->load->library('email');
+        // $this->email->initialize($config);
+
+        $this->email->from('prodiifamikompwt@gmail.com', 'Prodi Informatika Amikom Pwt');
+        $this->email->to($email);
+        $this->email->subject('Pengarsipan');
+        $this->email->message('<b>' . $uploader . '</b> menambahkan pengarsipan baru <i>' . $title . '</i> di <a href="' . base_url() . 'user/arsip' . '">Prodi Informatika Pwt</a>');
+
+        if ($this->email->send()) {
+            echo 'Email berhasil dikirim';
+        } else {
+            echo 'Email tidak berhasil dikirim';
+            echo '<br />';
+            echo $this->email->print_debugger();
+        }
     }
 
     // delete arsip
@@ -310,9 +339,12 @@ class Admin_model extends CI_Model
     {
         // kurang jika data dihapus maka file yang ada di folder asset ikut terhapus
         $data['nama_file'] = $this->db->get_where('user_file', ['id_file' => $id])->row_array();
-        $file = $data['nama_file']['userfile'];
-        if ($file) {
-            unlink(FCPATH . 'assets/arsip/file/' . $file);
+
+        for ($i = 1; $i < 10; $i++) {
+            $file = $data['nama_file']['userfile' . $i];
+            if ($file) {
+                unlink(FCPATH . 'assets/arsip/file/' . $file);
+            }
         }
 
         $this->db->delete('user_file', ['id_file' => $id]);

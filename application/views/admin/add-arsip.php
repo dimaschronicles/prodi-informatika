@@ -29,7 +29,6 @@
                     <div class="form-group">
                         <label for="userfile1">File 1</label>
                         <input type="file" class="form-control-file" id="userfile1" name="userfile1">
-                        <?= form_error('userfile1', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
 
