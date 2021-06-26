@@ -61,6 +61,24 @@
             </div>
         </div>
 
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Jumlah Admin</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlAdmin; ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users-cog fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- Content Row -->
 
@@ -70,12 +88,12 @@
 
     <div class="row">
         <!-- Card Profile -->
-        <div class="card mb-3 col-lg-8">
+        <div class="card mb-3 col">
             <div class="row no-gutters">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
                 </div>
-                <div class="col-md-8">
+                <div class="col">
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tbody>
@@ -90,10 +108,6 @@
                                 <tr>
                                     <td><b>No. Hp</b></td>
                                     <td><?= $user['telephone']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Jenis Kelamin</b></td>
-                                    <td><?= $user['gender']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Email</b></td>

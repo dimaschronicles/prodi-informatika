@@ -8,13 +8,13 @@
                 <div id="dynamic_field">
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul pengarsipan...">
                         <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Keterangan</label>
-                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan"></textarea>
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan pengarsipan..."></textarea>
                         <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 

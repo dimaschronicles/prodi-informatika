@@ -21,20 +21,32 @@
                                     <td><?= $dosen['name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><b>No. Hp</b></td>
-                                    <td><?= $dosen['telephone']; ?></td>
+                                    <td><b>Tempat Lahir</b></td>
+                                    <td><?= $dosen['pob']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Tanggal Lahir</b></td>
+                                    <td><?= $dosen['dob']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Alamat</b></td>
+                                    <td><?= $dosen['address']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Jenis Kelamin</b></td>
                                     <td><?= $dosen['gender']; ?></td>
                                 </tr>
                                 <tr>
+                                    <td><b>Agama</b></td>
+                                    <td><?= $dosen['religion']; ?></td>
+                                </tr>
+                                <tr>
                                     <td><b>Email</b></td>
                                     <td><?= $dosen['email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><b>Alamat</b></td>
-                                    <td><?= $dosen['address']; ?></td>
+                                    <td><b>No. Hp</b></td>
+                                    <td><?= $dosen['telephone']; ?></td>
                                 </tr>
                             </tbody>
                         </table>

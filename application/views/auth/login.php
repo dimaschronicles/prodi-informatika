@@ -13,7 +13,7 @@
                             <div class="p-5">
                                 <center><img src="<?= base_url('assets/img/profile/amikom.png'); ?>" height="80px" width="120px"></center>
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Aplikasi Content Management System Prodi Informatika Universitas Amikom Purwokerto</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Aplikasi Content Management System <br> Prodi Informatika Amikom Purwokerto</h1>
                                 </div>
 
                                 <?= $this->session->flashdata('message'); ?>

@@ -59,12 +59,12 @@ class Auth extends CI_Controller
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Check your username or password!</div>');
+                    Cek username atau password anda!</div>');
                 redirect('auth');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Check your username or password!</div>');
+            Cek username atau password anda!</div>');
             redirect('auth');
         }
     }
@@ -74,7 +74,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('nidn');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        You have been logout!</div>');
+        Anda berhasil logout!</div>');
         redirect('auth');
     }
 

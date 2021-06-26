@@ -8,11 +8,7 @@ class Super_model extends CI_Model
         $data = [
             'nidn' => $this->input->post('nidn', true),
             'name' => $this->input->post('name'),
-            'pob' => $this->input->post('pob'),
-            'dob' => $this->input->post('dob'),
             'address' => $this->input->post('address'),
-            'gender' => $this->input->post('gender'),
-            'religion' => $this->input->post('religion'),
             'email' => $this->input->post('email'),
             'telephone' => $this->input->post('telephone'),
             'image' => 'default.jpg',
@@ -27,5 +23,18 @@ class Super_model extends CI_Model
     public function deleteAdmin($id)
     {
         $this->db->delete('user', ['id_user' => $id]);
+    }
+
+    public function detailAdmin($id)
+    {
+        return $this->db->get_where('user', ['id_user' => $id])->row_array();
+    }
+
+    public function getCountAdmin()
+    {
+        $role = 2;
+        $this->db->where('role', $role);
+        $this->db->from('user');
+        return $this->db->count_all_results();
     }
 }

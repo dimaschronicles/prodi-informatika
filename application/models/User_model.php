@@ -9,6 +9,10 @@ class User_model extends CI_Model
 
         $nidn = $this->input->post('nidn');
         $name = $this->input->post('name');
+        $pob = $this->input->post('pob');
+        $dob = $this->input->post('dob');
+        $gender = $this->input->post('gender');
+        $religion = $this->input->post('religion');
         $email = $this->input->post('email');
         $address = $this->input->post('address');
         $telephone = $this->input->post('telephone');
@@ -39,6 +43,10 @@ class User_model extends CI_Model
 
         $this->db->set('name', $name);
         $this->db->set('email', $email);
+        $this->db->set('pob', $pob);
+        $this->db->set('dob', $dob);
+        $this->db->set('religion', $religion);
+        $this->db->set('gender', $gender);
         $this->db->set('address', $address);
         $this->db->set('telephone', $telephone);
         $this->db->where('nidn', $nidn);

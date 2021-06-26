@@ -11,6 +11,7 @@
                 <label for="nidn" class="col-sm-2 col-form-label">NIDN</label>
                 <div class="col-sm-10">
                     <input type="nidn" class="form-control" id="nidn" name="nidn" value="<?= $user['nidn']; ?>" readonly>
+                    <?= form_error('nidn', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
             </div>
             <div class="form-group row">
@@ -44,8 +45,12 @@
             <div class="form-group row">
                 <label for="gender" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                 <div class="col-sm-10">
-                    <input type="gender" class="form-control" id="gender" name="gender" value="<?= $user['gender']; ?>" readonly>
-                    <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select class="form-control" id="gender" name="gender">
+                        <?php $jk = $user['gender']; ?>
+                        <option value="0">-- Pilih Salah Satu --</option>
+                        <option value="Laki-laki" <?php if ($jk == "Laki-laki") echo 'selected="selected"';  ?>>Laki-laki</option>
+                        <option value="Perempuan" <?php if ($jk == "Perempuan") echo 'selected="selected"';  ?>>Perempuan</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">

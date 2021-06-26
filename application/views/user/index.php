@@ -10,12 +10,12 @@
     </div>
 
     <!-- Card Profile -->
-    <div class="card mb-3 col-lg-8">
+    <div class="card mb-3 col">
         <div class="row no-gutters">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
             </div>
-            <div class="col-md-8">
+            <div class="col">
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tbody>
@@ -28,20 +28,32 @@
                                 <td><?= $user['name']; ?></td>
                             </tr>
                             <tr>
-                                <td><b>No. Hp</b></td>
-                                <td><?= $user['telephone']; ?></td>
+                                <td><b>Tempat</b></td>
+                                <td><?= $user['pob']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Tanggal Lahir</b></td>
+                                <td><?= $user['dob']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Alamat</b></td>
+                                <td><?= $user['address']; ?></td>
                             </tr>
                             <tr>
                                 <td><b>Jenis Kelamin</b></td>
                                 <td><?= $user['gender']; ?></td>
                             </tr>
                             <tr>
+                                <td><b>Jenis Kelamin</b></td>
+                                <td><?= $user['religion']; ?></td>
+                            </tr>
+                            <tr>
                                 <td><b>Email</b></td>
                                 <td><?= $user['email']; ?></td>
                             </tr>
                             <tr>
-                                <td><b>Alamat</b></td>
-                                <td><?= $user['address']; ?></td>
+                                <td><b>No. Hp</b></td>
+                                <td><?= $user['telephone']; ?></td>
                             </tr>
                         </tbody>
                     </table>

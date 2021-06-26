@@ -83,14 +83,14 @@
                                 <span>Edit Profile</span></a>
                             </li>
 
-                            <?php if ($title == "Change Password") : ?>
+                            <?php if ($title == "Ganti Password") : ?>
                                 <li class="nav-item active">
                                 <?php else : ?>
                                 <li class="nav-item">
                                 <?php endif; ?>
                                 <a class="nav-link" href="<?= base_url('admin/changepassword'); ?>">
                                     <i class="fas fa-fw fa-key"></i>
-                                    <span>Change Password</span></a>
+                                    <span>Ganti Password</span></a>
                                 </li>
 
                                 <!-- Divider -->

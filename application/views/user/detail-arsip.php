@@ -14,7 +14,7 @@
                 <p><?= $arsip['description']; ?></p>
                 <?php for ($i = 1; $i <= 10; $i++) : ?>
                     <?php $fName = $arsip['userfile' . $i]; ?>
-                    <a href="<?= base_url(); ?>user/download/<?= $fName; ?>">
+                    <a href="<?= base_url(); ?>user/downloadarsip/<?= $fName; ?>">
                         <h6><?= $arsip['userfile' . $i]; ?></h6>
                     </a>
                 <?php endfor; ?>

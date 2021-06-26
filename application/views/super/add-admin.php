@@ -20,48 +20,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="pob" class="col-sm-2 col-form-label">Tempat Lahir</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pob" name="pob" placeholder="ex : Purwokerto">
-                        <?= form_error('pob', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="dob" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" id="dob" name="dob">
-                        <?= form_error('dob', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="address" class="col-sm-2 col-form-label">Alamat Lengkap</label>
                     <div class="col-sm-10">
                         <textarea type="text" class="form-control" id="address" name="address" placeholder="ex : Purwokerto, Jawa Tengah"></textarea>
                         <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="gender" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="gender" name="gender">
-                            <option>-- Pilih Salah Satu --</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="religion" class="col-sm-2 col-form-label">Agama</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" id="religion" name="religion">
-                            <option value="0">-- Pilih Salah Satu --</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katholik">Katholik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
                     </div>
                 </div>
                 <div class="form-group row">

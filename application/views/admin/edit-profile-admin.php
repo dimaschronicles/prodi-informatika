@@ -21,46 +21,10 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="pob" class="col-sm-2 col-form-label">Tempat Lahir</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="pob" name="pob" placeholder="ex : Purwokerto" value="<?= $user['pob']; ?>">
-                    <?= form_error('pob', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="dob" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                <div class="col-sm-10">
-                    <input type="date" class="form-control" id="dob" name="dob" value="<?= date('Y-m-d', strtotime($user['dob'])); ?>">
-                    <?= form_error('dob', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="address" class="col-sm-2 col-form-label">Alamat</label>
                 <div class="col-sm-10">
                     <textarea type="address" class="form-control" id="address" name="address" placeholder="Alamat Lengkap"><?= $user['address']; ?></textarea>
                     <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="gender" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                <div class="col-sm-10">
-                    <input type="gender" class="form-control" id="gender" name="gender" value="<?= $user['gender']; ?>" readonly>
-                    <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="religion" class="col-sm-2 col-form-label">Agama</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="religion" name="religion">
-                        <?php $agama = $user['religion']; ?>
-                        <option value="0">-- Pilih Salah Satu --</option>
-                        <option value="Islam" <?php if ($agama == "Islam") echo 'selected="selected"'; ?>>Islam</option>
-                        <option value="Kristen" <?php if ($agama == "Kristen") echo 'selected="selected"'; ?>>Kristen</option>
-                        <option value="Katholik" <?php if ($agama == "Katholik") echo 'selected="selected"'; ?>>Katholik</option>
-                        <option value="Hindu" <?php if ($agama == "Hindu") echo 'selected="selected"'; ?>>Hindu</option>
-                        <option value="Budha" <?php if ($agama == "Budha") echo 'selected="selected"'; ?>>Budha</option>
-                        <option value="Lainnya" <?php if ($agama == "Lainnya") echo 'selected="selected"'; ?>>Lainnya</option>
-                    </select>
                 </div>
             </div>
             <div class="form-group row">
@@ -78,7 +42,7 @@
                 </div>
             </div>
             <div class=" form-group row">
-                <div class="col-sm-2">Picture</div>
+                <div class="col-sm-2">Gambar</div>
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-sm-3">

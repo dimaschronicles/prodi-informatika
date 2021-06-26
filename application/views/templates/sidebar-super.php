@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('super'); ?>">
         <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/img/profile/uap.png'); ?>" height="40px" width="40px">
         </div>
@@ -83,14 +83,14 @@
                                 <span>Edit Profile</span></a>
                             </li>
 
-                            <?php if ($title == "Change Password") : ?>
+                            <?php if ($title == "Ganti Password") : ?>
                                 <li class="nav-item active">
                                 <?php else : ?>
                                 <li class="nav-item">
                                 <?php endif; ?>
                                 <a class="nav-link" href="<?= base_url('super/changepassword'); ?>">
                                     <i class="fas fa-fw fa-key"></i>
-                                    <span>Change Password</span></a>
+                                    <span>Ganti Password</span></a>
                                 </li>
 
                                 <!-- Divider -->

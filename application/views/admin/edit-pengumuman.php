@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Deskripsi</label>
+                        <label for="description">Keterangan</label>
                         <textarea class="form-control" id="description" name="description" rows="3"><?= $announcement['description'] ?></textarea>
                         <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
@@ -38,7 +38,7 @@
                     <small class="text-secondary pl-3">Max 10 file</small>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Edit Data</button>
+                <button type="submit" class="btn btn-primary">Ubah Pengumuman</button>
                 <a href="<?= base_url('admin/pengumuman'); ?>" class="btn btn-secondary">Kembali</a>
             </form>
         </div>

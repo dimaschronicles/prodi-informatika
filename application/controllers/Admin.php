@@ -18,6 +18,7 @@ class Admin extends CI_Controller
         $data['userCount'] = $this->admin->getCountDosen();
         $data['jmlPengumuman'] = $this->admin->getCountPengumuman();
         $data['jmlArsip'] = $this->admin->getCountArsip();
+        $data['jmlAdmin'] = $this->admin->getCountAdmin();
 
         // template view / tampilan
         $this->load->view('templates/header', $data);
@@ -37,6 +38,18 @@ class Admin extends CI_Controller
         $this->load->view('templates/sidebar-admin', $data);
         $this->load->view('templates/topbar-admin', $data);
         $this->load->view('admin/admin-page', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function detailAdmin($id)
+    {
+        $data['title'] = 'Detail Admin';
+        $data['user'] = $this->admin->getDosenByNidn();
+        $data['admin'] = $this->admin->detailAdmin($id);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar-admin', $data);
+        $this->load->view('templates/topbar-admin', $data);
+        $this->load->view('admin/detail-admin', $data);
         $this->load->view('templates/footer');
     }
 
@@ -70,11 +83,11 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama', 'required|trim');
         $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim');
         $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim');
-        $this->form_validation->set_rules('address', 'Address', 'required|trim');
+        $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'This email is already registered!'
         ]);
-        $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
+        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[4]|matches[password2]', [
             'matches' => 'password dont match!',
             'min_length' => 'Password too short!'
@@ -90,7 +103,7 @@ class Admin extends CI_Controller
         } else {
             $this->admin->createDosen();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data dosen has been created!</div>');
+            Data dosen berhasil dibuat!</div>');
             redirect('admin/dosen');
         }
     }
@@ -99,7 +112,7 @@ class Admin extends CI_Controller
     {
         $this->admin->deleteDosen($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data dosen has been deleted!</div>');
+        Data dosen berhasil dihapus!</div>');
         redirect('admin/dosen');
     }
 
@@ -134,8 +147,8 @@ class Admin extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
 
         // rules
-        $this->form_validation->set_rules('title', 'Title', 'required|trim');
-        $this->form_validation->set_rules('description', 'Description', 'required|trim');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim');
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -146,7 +159,7 @@ class Admin extends CI_Controller
         } else {
             $this->admin->createPengumuman();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been created!</div>');
+            Data pengumuman berhasil dibuat!</div>');
             redirect('admin/pengumuman');
         }
     }
@@ -155,7 +168,7 @@ class Admin extends CI_Controller
     {
         $this->admin->deletePengumuman($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data has been deleted!</div>');
+        Data pengumuman berhasil dihapus!</div>');
         redirect('admin/pengumuman');
     }
 
@@ -166,9 +179,8 @@ class Admin extends CI_Controller
         $data['announcement'] = $this->admin->detailPengumuman($id);
 
         // rules
-        $this->form_validation->set_rules('title', 'Title', 'required|trim');
-        $this->form_validation->set_rules('description', 'Description', 'required|trim');
-        // $this->form_validation->set_rules('file_lampiran[]', 'Document');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim');
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -179,7 +191,7 @@ class Admin extends CI_Controller
         } else {
             $this->admin->updatePengumuman();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been updated!</div>');
+            Data pengumuman berhasil diubah!</div>');
             redirect('admin/pengumuman');
         }
     }
@@ -221,27 +233,16 @@ class Admin extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
         $data['dosen'] = $this->admin->getAllDosen();
 
-        $user = 'Anggie Feb,Aji S,Refri Riyanto';
-        $name = explode(',', $user);
-        // var_dump($name);
-        // die;
-        // array(3) { [0]=> string(10) "Anggie Feb" [1]=> string(5) "Aji S" [2]=> string(13) "Refri Riyanto" }
-
-
-        $dosen['dosen'] = $this->db->query('SELECT name, email FROM user WHERE role=3 ORDER BY nidn ASC')->result_array();
-        $columName = array_column($dosen['dosen'], 'name');
-        // $columEmail = array_column($dosen['dosen'], 'email');
-        // var_dump($columName);
-        // die;
-        // array(3) { [0]=> string(10) "Anggie Feb"[1]=> string(5) "Aji S" [2]=> string(13) "Refri Riyanto" }
-
-        // $result = array_intersect($columName, $name);
-        // var_dump($result);
-        // die;
-
         $this->form_validation->set_rules('title', 'Judul', 'required|trim');
         $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
         $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');
+        for ($i = 2; $i <= 10; $i++) {
+            if (!empty($_FILES['userfile' . $i]['name'])) {
+                $this->form_validation->set_rules('userfile' . $i, 'File');
+            } else if (empty($_FILES['userfile1']['name'])) {
+                $this->form_validation->set_rules('userfile1', 'File', 'required');
+            }
+        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -252,7 +253,7 @@ class Admin extends CI_Controller
         } else {
             $this->admin->createArsip();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been created!</div>');
+            Data arsip berhasil dibuat!</div>');
             redirect('admin/arsip');
         }
     }
@@ -262,7 +263,7 @@ class Admin extends CI_Controller
     {
         $this->admin->deleteArsip($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data has been deleted!</div>');
+        Data arsip berhasil dihapus!</div>');
         redirect('admin/arsip');
     }
 
@@ -277,6 +278,13 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('title', 'Judul', 'trim');
         $this->form_validation->set_rules('description', 'Keterangan', 'trim');
         $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');
+        for ($i = 2; $i <= 10; $i++) {
+            if (!empty($_FILES['userfile' . $i]['name'])) {
+                $this->form_validation->set_rules('userfile' . $i, 'File');
+            } else if (empty($_FILES['userfile1']['name'])) {
+                $this->form_validation->set_rules('userfile1', 'File', 'required');
+            }
+        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -287,7 +295,7 @@ class Admin extends CI_Controller
         } else {
             $this->admin->updateArsip();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been updated!</div>');
+            Data arsip berhasil diubah!</div>');
             redirect('admin/arsip');
         }
     }
@@ -299,9 +307,11 @@ class Admin extends CI_Controller
 
         // rules
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim');
+        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim');
+        $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('address', 'Address', 'required|trim');
-        $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
+        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric');
 
         if ($this->form_validation->run() == false) {
             // template view / tampilan
@@ -313,19 +323,19 @@ class Admin extends CI_Controller
         } else {
             $this->admin->editProfileAdmin();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Your profile has been updated!</div>');
+            Profil anda berhasil disimpan!</div>');
             redirect('admin');
         }
     }
 
     public function changePassword()
     {
-        $data['title'] = 'Change Password';
+        $data['title'] = 'Ganti Password';
         $data['user'] = $this->db->get_where('user', ['nidn' => $this->session->userdata('nidn')])->row_array();
 
-        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
+        $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[3]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[3]|matches[new_password1]');
 
         if ($this->form_validation->run() == false) {
             // template view / tampilan

@@ -29,7 +29,7 @@
                                     <td><?= $a['name']; ?></td>
                                     <td><?= $a['email']; ?></td>
                                     <td>
-                                        <a href="" class="badge badge-primary">Detail</a>
+                                        <a href="<?= base_url(); ?>admin/detailadmin/<?= $a['id_user']; ?>" class="badge badge-primary">Detail</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

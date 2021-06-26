@@ -38,7 +38,7 @@
                     <small class="text-secondary pl-3">Max 10 file</small>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Edit Data</button>
+                <button type="submit" class="btn btn-primary">Ubah Pengumuman</button>
                 <a href="<?= base_url('super/pengumuman'); ?>" class="btn btn-secondary">Kembali</a>
             </form>
         </div>

@@ -71,14 +71,14 @@
                                 <?php endforeach; ?>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Simpan</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="class-footer">
-                    <button type="submit" class="btn btn-primary">Edit Arsip</button>
+                    <button type="submit" class="btn btn-primary">Ubah Arsip</button>
                     <a href="<?= base_url('admin/arsip'); ?>" class="btn btn-secondary">Kembali</a>
                 </div>
             </form>

@@ -13,15 +13,30 @@ class Admin_model extends CI_Model
         return $this->db->get_where('user', ['role' => '2'])->result_array();
     }
 
+    public function detailAdmin($id)
+    {
+        return $this->db->get_where('user', ['id_user' => $id])->row_array();
+    }
+
+    public function getCountAdmin()
+    {
+        $role = 2;
+        $this->db->where('role', $role);
+        $this->db->from('user');
+        return $this->db->count_all_results();
+    }
+
     public function getCountDosen()
     {
-        return $this->db->count_all('user');
+        $role = 3;
+        $this->db->where('role', $role);
+        $this->db->from('user');
+        return $this->db->count_all_results();
     }
 
     public function getAllDosen()
     {
-        $query = 'SELECT * FROM `user` WHERE `role`=3 ORDER BY `user`.`nidn` ASC';
-        return $this->db->query($query)->result_array();
+        return $this->db->query('SELECT * FROM `user` WHERE `role`=3 ORDER BY `user`.`nidn` ASC')->result_array();
     }
 
     public function createDosen()
@@ -47,7 +62,7 @@ class Admin_model extends CI_Model
 
     public function deleteDosen($id)
     {
-        $this->db->delete('user', ['id_user' => $id]);
+        return $this->db->delete('user', ['id_user' => $id]);
     }
 
     public function detailDosen($id)
@@ -69,6 +84,10 @@ class Admin_model extends CI_Model
 
         $nidn = $this->input->post('nidn');
         $name = $this->input->post('name');
+        $pob = $this->input->post('pob');
+        $dob = $this->input->post('dob');
+        $gender = $this->input->post('gender');
+        $religion = $this->input->post('religion');
         $email = $this->input->post('email');
         $address = $this->input->post('address');
         $telephone = $this->input->post('telephone');
@@ -97,6 +116,10 @@ class Admin_model extends CI_Model
         }
 
         $this->db->set('name', $name);
+        $this->db->set('pob', $pob);
+        $this->db->set('dob', $dob);
+        $this->db->set('religion', $religion);
+        $this->db->set('gender', $gender);
         $this->db->set('email', $email);
         $this->db->set('address', $address);
         $this->db->set('telephone', $telephone);
@@ -124,7 +147,6 @@ class Admin_model extends CI_Model
         date_default_timezone_set("Asia/Bangkok");
         $date_creation = date('Y-m-d H:i:s');
 
-
         $config['allowed_types'] = '*';
         $config['max_size'] = '2048'; // kb
         $config['detect_mime'] = false;
@@ -148,6 +170,35 @@ class Admin_model extends CI_Model
         $this->db->set('description', $desc);
         $this->db->set('date_creation', $date_creation);
         $this->db->insert('pengumuman');
+
+        $query = $this->db->query('SELECT * FROM `user` WHERE `role`=3')->result_array();
+        $email = array_column($query, 'email');
+
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'prodiif18@gmail.com';
+        $config['smtp_pass'] = 'akunbuzzer123';
+        $config['smtp_port'] = 465;
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
+        $this->email->to($email);
+        $this->email->subject('Pengumuman');
+        $this->email->message('<b>' . $uploader . '</b> menambahkan pengumuman baru <i>' . $title . '</i> di <a href="' . base_url() . 'user/pengumuman' . '">Prodi Informatika Pwt</a>');
+
+        if ($this->email->send()) {
+            echo 'Email berhasil dikirim';
+        } else {
+            echo 'Email tidak berhasil dikirim';
+            echo '<br />';
+            echo $this->email->print_debugger();
+        }
     }
 
     public function deletePengumuman($id)
@@ -217,7 +268,7 @@ class Admin_model extends CI_Model
     {
         // return $this->db->get_where('user_file', ['id_file' => $id])->row_array();
 
-        $query = "SELECT *,(SELECT GROUP_CONCAT(name) FROM user_arsip x LEFT JOIN user y ON x.id_user=y.id_user WHERE x.id_file=user_file.id_file) as name, email FROM user_file WHERE id_file='$id' ORDER BY date_created DESC";
+        $query = "SELECT *,(SELECT GROUP_CONCAT(name) FROM user_arsip x LEFT JOIN user y ON x.id_user=y.id_user WHERE x.id_file=user_file.id_file) as name FROM user_file WHERE id_file='$id' ORDER BY date_created DESC";
 
         // test
         // $a = $this->db->query($query)->result_array();
@@ -268,7 +319,17 @@ class Admin_model extends CI_Model
         $config['upload_path'] = './assets/arsip/file/';
         $this->load->library('upload', $config);
 
-        for ($i = 1; $i <= 10; $i++) {
+        $lampiran = $_FILES['userfile1']['name'];
+        if ($lampiran) {
+            if ($this->upload->do_upload('userfile1')) {
+                $upload_file = $this->upload->data('file_name');
+                $this->db->set('userfile1', $upload_file);
+            } else {
+                echo $this->upload->display_errors();
+            }
+        }
+
+        for ($i = 2; $i <= 10; $i++) {
             $lampiran_file = $_FILES['userfile' . $i]['name'];
             if ($lampiran_file) {
                 if ($this->upload->do_upload('userfile' . $i)) {
@@ -306,21 +367,20 @@ class Admin_model extends CI_Model
         $user['user'] = $this->getEmail($id_file);
         $email = explode(',', $user['user']['email']);
 
-        // $config = [
-        //     'protocol' => 'smtp',
-        //     'smtp_host' => 'ssl://smtp.googlemail.com',
-        //     'smtp_user' => 'prodiifamikompwt@gmail.com',
-        //     'smtp_pass' => 'akunbuzzer123',
-        //     'smtp_port' => '465',
-        //     'mailtype' => 'html',
-        //     'charset' => 'utf-8',
-        //     'newline' => "\r\n",
-        // ];
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'prodiif18@gmail.com';
+        $config['smtp_pass'] = 'akunbuzzer123';
+        $config['smtp_port'] = 465;
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
 
-        $this->load->library('email');
-        // $this->email->initialize($config);
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
 
-        $this->email->from('prodiifamikompwt@gmail.com', 'Prodi Informatika Amikom Pwt');
+        $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
         $this->email->to($email);
         $this->email->subject('Pengarsipan');
         $this->email->message('<b>' . $uploader . '</b> menambahkan pengarsipan baru <i>' . $title . '</i> di <a href="' . base_url() . 'user/arsip' . '">Prodi Informatika Pwt</a>');

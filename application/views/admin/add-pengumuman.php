@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Deskripsi</label>
+                        <label for="description">Keterangan</label>
                         <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                         <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
