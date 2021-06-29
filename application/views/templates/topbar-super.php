@@ -35,16 +35,16 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="<?= base_url('admin/editprofileadmin'); ?>">
                             <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Edit Profile
+                            Edit Profil
                         </a>
                         <a class="dropdown-item" href="<?= base_url('admin/changepassword'); ?>">
                             <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Change Password
+                            Ganti Password
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            Keluar
                         </a>
                     </div>
                 </li>

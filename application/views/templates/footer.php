@@ -30,8 +30,8 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+                <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Ya</a>
             </div>
         </div>
     </div>

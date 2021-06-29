@@ -44,7 +44,7 @@
                                 <td><?= $a['uploader']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>admin/editarsip/<?= $a['id_file']; ?>" class="badge badge-warning">Edit</a>
-                                    <a href="<?= base_url(); ?>admin/deletearsip/<?= $a['id_file']; ?>" onclick="return confirm('Apakah data ini akan dihapus?');">Hapus</a>
+                                    <a href="<?= base_url(); ?>admin/deletearsip/<?= $a['id_file']; ?>" class="badge badge-danger" onclick="return confirm('Apakah data ini akan dihapus?');">Hapus</a>
                                 </td>
                             </tr>
                             <?php $j++; ?>

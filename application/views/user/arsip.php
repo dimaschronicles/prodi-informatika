@@ -3,9 +3,9 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
     <!-- Show Data Menu -->
-    <div class="card shadow">
+    <div class="card shadow mb-4">
+
         <div class="card-body">
 
             <div class="table-responsive">
@@ -36,10 +36,11 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-        <!-- /.container-fluid -->
     </div>
+
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

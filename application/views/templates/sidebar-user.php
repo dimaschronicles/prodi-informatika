@@ -47,24 +47,24 @@
                     <span>Pengarsipan</span></a>
                 </li>
 
-                <?php if ($title == "Edit Profile") : ?>
+                <?php if ($title == "Edit Profil") : ?>
                     <li class="nav-item active">
                     <?php else : ?>
                     <li class="nav-item">
                     <?php endif; ?>
                     <a class="nav-link" href="<?= base_url('user/edit'); ?>">
                         <i class="fas fa-fw fa-user-edit"></i>
-                        <span>Edit Profile</span></a>
+                        <span>Edit Profil</span></a>
                     </li>
 
-                    <?php if ($title == "Change Password") : ?>
+                    <?php if ($title == "Ganti Password") : ?>
                         <li class="nav-item active">
                         <?php else : ?>
                         <li class="nav-item">
                         <?php endif; ?>
                         <a class="nav-link" href="<?= base_url('user/changepassword'); ?>">
                             <i class="fas fa-fw fa-key"></i>
-                            <span>Change Password</span></a>
+                            <span>Ganti Password</span></a>
                         </li>
 
                         <!-- Divider -->
@@ -74,7 +74,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                                 <i class="fas fa-fw fa-sign-out-alt"></i>
-                                <span>Logout</span></a>
+                                <span>Keluar</span></a>
                         </li>
 
                         <!-- Divider -->

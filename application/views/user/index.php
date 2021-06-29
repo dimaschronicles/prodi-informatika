@@ -17,6 +17,7 @@
             </div>
             <div class="col">
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
@@ -44,7 +45,7 @@
                                 <td><?= $user['gender']; ?></td>
                             </tr>
                             <tr>
-                                <td><b>Jenis Kelamin</b></td>
+                                <td><b>Agama</b></td>
                                 <td><?= $user['religion']; ?></td>
                             </tr>
                             <tr>
@@ -58,6 +59,7 @@
                         </tbody>
                     </table>
                     <!-- <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p> -->
+                </div>
                 </div>
             </div>
         </div>

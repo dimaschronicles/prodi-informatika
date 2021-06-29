@@ -36,7 +36,7 @@
                                 <td>
                                     <a href="<?= base_url(); ?>admin/detailpengumuman/<?= $a['id']; ?>" class="badge badge-primary">Detail</a>
                                     <a href="<?= base_url(); ?>admin/editpengumuman/<?= $a['id']; ?>" class="badge badge-warning">Edit</a>
-                                    <a href="<?= base_url(); ?>admin/deletepengumuman/<?= $a['id']; ?>" onclick="return confirm('Apakah data ini akan dihapus?');">Hapus</a>
+                                    <a href="<?= base_url(); ?>admin/deletepengumuman/<?= $a['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah data ini akan dihapus?');">Hapus</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

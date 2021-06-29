@@ -4,8 +4,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <!-- Show Data Menu -->
-    <div class="card shadow">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
         <div class="card-body">
 
             <div class="table-responsive">
@@ -32,10 +33,12 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-        <!-- /.container-fluid -->
     </div>
+
+
+</div>
+<!-- End of Main Content -->
 
 </div>
 <!-- End of Main Content -->

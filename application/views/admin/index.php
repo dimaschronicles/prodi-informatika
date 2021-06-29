@@ -86,7 +86,6 @@
         <?= $this->session->flashdata('message'); ?>
     </div>
 
-    <div class="row">
         <!-- Card Profile -->
         <div class="card mb-3 col">
             <div class="row no-gutters">
@@ -95,6 +94,7 @@
                 </div>
                 <div class="col">
                     <div class="card-body">
+                        <div class="table-responsive">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
@@ -122,8 +122,8 @@
                         <!-- <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p> -->
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
 
 
     </div>

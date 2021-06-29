@@ -302,7 +302,7 @@ class Admin extends CI_Controller
 
     public function editProfileAdmin()
     {
-        $data['title'] = 'Edit Profile';
+        $data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('user', ['nidn' => $this->session->userdata('nidn')])->row_array();
 
         // rules

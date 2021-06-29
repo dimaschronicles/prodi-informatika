@@ -189,8 +189,8 @@ class Admin_model extends CI_Model
 
         $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
         $this->email->to($email);
-        $this->email->subject('Pengumuman');
-        $this->email->message('<b>' . $uploader . '</b> menambahkan pengumuman baru <i>' . $title . '</i> di <a href="' . base_url() . 'user/pengumuman' . '">Prodi Informatika Pwt</a>');
+        $this->email->subject('Pengumuman Baru: "' . $title . ' (' . $date_creation . ')"');
+        $this->email->message('<b>' . $uploader . '</b> menambahkan pengumuman baru <i>' . $title . '</i> di <a href="' . base_url('user/pengumuman') . '">Prodi Informatika Pwt</a>');
 
         if ($this->email->send()) {
             echo 'Email berhasil dikirim';
@@ -382,8 +382,8 @@ class Admin_model extends CI_Model
 
         $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
         $this->email->to($email);
-        $this->email->subject('Pengarsipan');
-        $this->email->message('<b>' . $uploader . '</b> menambahkan pengarsipan baru <i>' . $title . '</i> di <a href="' . base_url() . 'user/arsip' . '">Prodi Informatika Pwt</a>');
+        $this->email->subject('Pengarsipan Baru: "' . $title . ' (' . $date_created . ')"');
+        $this->email->message('<b>' . $uploader . '</b> menambahkan pengarsipan baru <i>' . $title . '</i> di <a href="' . base_url('user/arsip') . '">Prodi Informatika Pwt</a>');
 
         if ($this->email->send()) {
             echo 'Email berhasil dikirim';
