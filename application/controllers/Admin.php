@@ -278,13 +278,6 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('title', 'Judul', 'trim');
         $this->form_validation->set_rules('description', 'Keterangan', 'trim');
         $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');
-        for ($i = 2; $i <= 10; $i++) {
-            if (!empty($_FILES['userfile' . $i]['name'])) {
-                $this->form_validation->set_rules('userfile' . $i, 'File');
-            } else if (empty($_FILES['userfile1']['name'])) {
-                $this->form_validation->set_rules('userfile1', 'File', 'required');
-            }
-        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);

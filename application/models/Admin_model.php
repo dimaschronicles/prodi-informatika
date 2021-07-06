@@ -224,7 +224,7 @@ class Admin_model extends CI_Model
     public function updatePengumuman()
     {
         $data['user'] = $this->db->get_where('user', ['nidn' => $this->session->userdata('nidn')])->row_array();
-
+        $uploader = $data['user']['name'];
         $id = $this->input->post('id');
         $title = $this->input->post('title');
         $desc = $this->input->post('description');
@@ -257,11 +257,41 @@ class Admin_model extends CI_Model
             }
         }
 
+        $this->db->set('uploader', $uploader);
         $this->db->set('title', $title);
         $this->db->set('description', $desc);
         $this->db->set('date_creation', $date_creation);
         $this->db->where('id', $id);
         $this->db->update('pengumuman');
+
+        $query = $this->db->query('SELECT * FROM `user` WHERE `role`=3')->result_array();
+        $email = array_column($query, 'email');
+
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'prodiif18@gmail.com';
+        $config['smtp_pass'] = 'akunbuzzer123';
+        $config['smtp_port'] = 465;
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
+        $this->email->to($email);
+        $this->email->subject('Pembaruan Pengumuman: "' . $title . ' (' . $date_creation . ')"');
+        $this->email->message('<b>' . $uploader . '</b> mengupdate pengumuman <i>' . $title . '</i> di <a href="' . base_url('user/pengumuman') . '">Prodi Informatika Pwt</a>');
+
+        if ($this->email->send()) {
+            echo 'Email berhasil dikirim';
+        } else {
+            echo 'Email tidak berhasil dikirim';
+            echo '<br />';
+            echo $this->email->print_debugger();
+        }
     }
 
     public function getArsipFile($id)
@@ -475,6 +505,35 @@ class Admin_model extends CI_Model
                 'id_user' => $id_dosen
             ];
             $this->db->insert('user_arsip', $data);
+        }
+
+        $user['user'] = $this->getEmail($id_file);
+        $email = explode(',', $user['user']['email']);
+
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'prodiif18@gmail.com';
+        $config['smtp_pass'] = 'akunbuzzer123';
+        $config['smtp_port'] = 465;
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('prodiif18@gmail.com', 'Prodi Informatika Amikom Pwt');
+        $this->email->to($email);
+        $this->email->subject('Pembaruan Arsip: "' . $title . ' (' . $date_created . ')"');
+        $this->email->message('<b>' . $uploader . '</b> mengupdate pengarsipan <i>' . $title . '</i> di <a href="' . base_url('user/arsip') . '">Prodi Informatika Pwt</a>');
+
+        if ($this->email->send()) {
+            echo 'Email berhasil dikirim';
+        } else {
+            echo 'Email tidak berhasil dikirim';
+            echo '<br />';
+            echo $this->email->print_debugger();
         }
     }
 }

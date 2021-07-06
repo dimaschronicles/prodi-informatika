@@ -51,8 +51,26 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
+                    // Successfully Login Message.
+                    $onLoginSuccess = 'Login Matched';
+
+                    // Converting the message into JSON format.
+                    $SuccessMSG = json_encode($onLoginSuccess);
+
+                    // Echo the message.
+                    echo $SuccessMSG;
+
                     redirect('super');
                 } else if ($user['role'] == 3) {
+                    // Successfully Login Message.
+                    $onLoginSuccess = 'Login Matched';
+
+                    // Converting the message into JSON format.
+                    $SuccessMSG = json_encode($onLoginSuccess);
+
+                    // Echo the message.
+                    echo $SuccessMSG;
+
                     redirect('user');
                 } else {
                     redirect('admin');

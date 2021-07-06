@@ -29,6 +29,15 @@
                 </div>
 
                 <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="defaultCheck1" onclick="myFunction()">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Tampilkan Password
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary">Simpan Password</button>
                 </div>
             </form>
@@ -40,3 +49,20 @@
 
 </div>
 <!-- End of Main Content -->
+
+<script>
+    function myFunction() {
+        var current_pass = document.getElementById("current_password");
+        var new_pass = document.getElementById("new_password1");
+        var conf_pass = document.getElementById("new_password2");
+        if (current_pass.type === "password" && new_pass.type === "password" && conf_pass.type === "password") {
+            current_pass.type = "text";
+            new_pass.type = "text";
+            conf_pass.type = "text";
+        } else {
+            current_pass.type = "password";
+            new_pass.type = "password";
+            conf_pass.type = "password";
+        }
+    }
+</script>
