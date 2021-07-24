@@ -8,13 +8,13 @@
                 <div id="dynamic_field">
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul..." value="<?= set_value('title'); ?>">
                         <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Keterangan</label>
-                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan"></textarea>
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan..."><?= set_value('description'); ?></textarea>
                         <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="userfile1">File 1</label>
+                        <label for="userfile1">Lampiran File 1</label>
                         <input type="file" class="form-control-file" id="userfile1" name="userfile1">
                         <?= form_error('userfile1', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <button type="button" class="btn btn-success" id="add" name="add">Tambah Lampiran</button>
-                    <small class="text-secondary pl-3">Max 10 file</small>
+                    <small class="text-secondary pl-3">Maksimal jumlah 10 file</small>
                 </div>
 
                 <!-- Modal -->
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="class-footer">
-                    <button type="submit" class="btn btn-primary">Simpan Arsip</button>
+                    <button type="submit" class="btn btn-primary">Simpan Berita</button>
                     <a href="<?= base_url('admin/arsip'); ?>" class="btn btn-secondary">Kembali</a>
                 </div>
             </form>
@@ -91,7 +91,7 @@
         $('#add').click(function() {
             if (i <= 9) {
                 i++;
-                $('#dynamic_field').append('<div id="row' + i + '"><div class="form-group"><label for="userfile' + i + '">File ' + i + '</label><input type="file" class="form-control-file" id="userfile' + i + '" name="userfile' + i + '"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove mt-2" id="' + i + '"><i class="fas fa-times"></i></button></div></div></div>');
+                $('#dynamic_field').append('<div id="row' + i + '"><div class="form-group"><label for="userfile' + i + '">Lampiran File ' + i + '</label><input type="file" class="form-control-file" id="userfile' + i + '" name="userfile' + i + '"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove mt-2" id="' + i + '"><i class="fas fa-times"></i></button></div></div></div>');
             }
         });
 

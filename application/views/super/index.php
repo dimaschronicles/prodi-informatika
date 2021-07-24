@@ -36,7 +36,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlPengumuman; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-folder-open fa-2x text-gray-300"></i>
+                            <i class="fas fa-scroll fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Jumlah Pengarsipan</div>
+                                Jumlah Arsip</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlArsip; ?></div>
                         </div>
                         <div class="col-auto">
@@ -86,15 +86,15 @@
         <?= $this->session->flashdata('message'); ?>
     </div>
 
-        <!-- Card Profile -->
-        <div class="card mb-3 col">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-                    <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
-                </div>
-                <div class="col">
-                    <div class="card-body">
-                        <div class="table-responsive">
+    <!-- Card Profile -->
+    <div class="card mb-3 col">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
@@ -106,12 +106,12 @@
                                     <td><?= $user['name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><b>No. Hp</b></td>
-                                    <td><?= $user['telephone']; ?></td>
-                                </tr>
-                                <tr>
                                     <td><b>Email</b></td>
                                     <td><?= $user['email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>No. Hp</b></td>
+                                    <td><?= $user['telephone']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Alamat</b></td>
@@ -120,9 +120,9 @@
                             </tbody>
                         </table>
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
 
     </div>

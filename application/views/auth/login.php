@@ -20,7 +20,7 @@
 
                                 <form class="user" method="POST" action="<?= base_url('auth'); ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter NIDN..." name="nidn" value="<?= set_value('email'); ?>">
+                                        <input type="text" class="form-control form-control-user" id="nidn" placeholder="Enter NIDN..." name="nidn" value="<?= set_value('nidn'); ?>">
                                         <?= form_error('nidn', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">

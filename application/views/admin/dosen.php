@@ -7,7 +7,6 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
-            <a href="<?= base_url('admin/adddosen'); ?>" class="btn btn-primary">Tambah Data Dosen</a>
 
             <div class="mt-3"><?= $this->session->flashdata('message'); ?></div>
 
@@ -52,7 +51,6 @@
                                 <td><?= $d['name']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>admin/detaildosen/<?= $d['id_user']; ?>" class="badge badge-primary">Detail</a>
-                                    <a href="<?= base_url(); ?>admin/deletedosen/<?= $d['id_user']; ?>" class="badge badge-danger" onclick="return confirm('Apakah data ini akan dihapus?');">Hapus</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

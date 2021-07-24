@@ -22,20 +22,21 @@
                     <div class="form-group">
                         <?php for ($i = 1; $i <= 10; $i++) : ?>
                             <?php if (!empty($announcement['file_lampiran' . $i])) : ?>
-                                <h6>File <?= $i; ?> : <?= $announcement['file_lampiran' . $i]; ?></h6>
+                                <h6>Lampiran File <?= $i; ?> : <?= $announcement['file_lampiran' . $i]; ?></h6>
                             <?php endif; ?>
                         <?php endfor; ?>
                     </div>
 
                     <div class="form-group">
-                        <label for="file_lampiran1">File 1</label>
+                        <label for="file_lampiran1">Lampiran File 1</label>
                         <input type="file" class="form-control-file" id="file_lampiran1" name="file_lampiran1">
+                        <?= form_error('file_lampiran1', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <button type="button" class="btn btn-success" id="add" name="add">Tambah Lampiran</button>
-                    <small class="text-secondary pl-3">Max 10 file</small>
+                    <small class="text-secondary pl-3">Maksimal jumlah 10 file</small>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Ubah Pengumuman</button>
@@ -60,7 +61,7 @@
         $('#add').click(function() {
             if (i <= 9) {
                 i++;
-                $('#dynamic_field').append('<div id="row' + i + '"><div class="form-group"><label for="file_lampiran' + i + '">File ' + i + '</label><input type="file" class="form-control-file" id="file_lampiran' + i + '" name="file_lampiran' + i + '"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove mt-2" id="' + i + '"><i class="fas fa-times"></i></button></div></div></div>');
+                $('#dynamic_field').append('<div id="row' + i + '"><div class="form-group"><label for="file_lampiran' + i + '">Lampiran File ' + i + '</label><input type="file" class="form-control-file" id="file_lampiran' + i + '" name="file_lampiran' + i + '"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove mt-2" id="' + i + '"><i class="fas fa-times"></i></button></div></div></div>');
             }
         });
 

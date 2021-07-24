@@ -48,20 +48,35 @@ class Super extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
 
         // validasi
-        $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|is_unique[user.nidn]', [
-            'is_unique' => 'This NIDN is already registered!'
+        $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|min_length[10]|max_length[10]|is_unique[user.nidn]', [
+            'required' => 'NIDN harus diisi!',
+            'numeric' => 'NIDN harus angka!',
+            'min_length' => 'NIDN minimal 10 digit!',
+            'max_length' => 'NIDN maksimal 10 digit!',
+            'is_unique' => 'NIDN sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim', ['required' => 'Nama harus diisi!']);
+        $this->form_validation->set_rules('address', 'Alamat', 'required|trim', ['required' => 'Alamat harus diisi!',]);
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email is already registered!'
+            'required' => 'Email harus diisi!',
+            'valid_email' => 'Email tidak valid!',
+            'is_unique' => 'Email ini sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric');
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[4]|matches[password2]', [
-            'matches' => 'password dont match!',
-            'min_length' => 'Password too short!'
+        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric|min_length[11]|max_length[13]', [
+            'required' => 'Nomor HP harus diisi!',
+            'numeric' => 'Nomor HP harus angka!',
+            'min_length' => 'NIDN minimal 11 digit!',
+            'max_length' => 'NIDN maksimal 13 digit!'
         ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+            'required' => 'Password harus diisi!',
+            'matches' => 'Password tidak sama!',
+            'min_length' => 'Password minimal 8 karakter!',
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
+            'required' => 'Konfirmasi Password harus diisi!',
+            'matches' => 'Konfirmasi Password tidak sama dengan Password'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -121,22 +136,39 @@ class Super extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
 
         // validasi
-        $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|is_unique[user.nidn]', [
-            'is_unique' => 'This NIDN is already registered!'
+        $this->form_validation->set_rules('nidn', 'NIDN', 'required|trim|numeric|min_length[10]|max_length[10]|is_unique[user.nidn]', [
+            'required' => 'NIDN harus diisi!',
+            'numeric' => 'NIDN harus angka!',
+            'min_length' => 'NIDN minimal 10 digit!',
+            'max_length' => 'NIDN maksimal 10 digit!',
+            'is_unique' => 'NIDN sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim');
-        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim');
-        $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim', ['required' => 'Nama harus diisi!']);
+        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim', ['required' => 'Tempat Lahir harus diisi!',]);
+        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim', ['required' => 'Tanggal Lahir harus diisi!',]);
+        $this->form_validation->set_rules('address', 'Alamat', 'required|trim', ['required' => 'Alamat harus diisi!',]);
+        $this->form_validation->set_rules('gender', 'Jenis Kelamin', 'required|trim', ['required' => 'Jenis Kelamin harus diisi!',]);
+        $this->form_validation->set_rules('religion', 'Agama', 'required|trim', ['required' => 'Agama harus diisi!',]);
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email is already registered!'
+            'required' => 'Email harus diisi!',
+            'valid_email' => 'Email tidak valid!',
+            'is_unique' => 'Email ini sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric');
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[4]|matches[password2]', [
-            'matches' => 'password dont match!',
-            'min_length' => 'Password too short!'
+        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric|min_length[11]|max_length[13]', [
+            'required' => 'Nomor HP harus diisi!',
+            'numeric' => 'Nomor HP harus angka!',
+            'min_length' => 'NIDN minimal 11 digit!',
+            'max_length' => 'NIDN maksimal 13 digit!'
         ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+            'required' => 'Password harus diisi!',
+            'matches' => 'Password tidak sama!',
+            'min_length' => 'Password minimal 8 karakter!',
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
+            'required' => 'Konfirmasi Password harus diisi!',
+            'matches' => 'Konfirmasi Password tidak sama dengan Password'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -191,8 +223,13 @@ class Super extends CI_Controller
         $data['user'] = $this->admin->getDosenByNidn();
 
         // rules
-        $this->form_validation->set_rules('title', 'Judul', 'required|trim');
-        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim', ['required' => 'Judul harus diisi!']);
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim', ['required' => 'Keterangan harus diisi!']);
+        for ($i = 1; $i <= 10; $i++) {
+            if (!empty($_FILES['file_lampiran' . $i]['name'])) {
+                $this->form_validation->set_rules('file_lampiran' . $i, 'File');
+            }
+        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -203,7 +240,7 @@ class Super extends CI_Controller
         } else {
             $this->admin->createPengumuman();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been created!</div>');
+            Data pengumuman berhasil dibuat!</div>');
             redirect('super/pengumuman');
         }
     }
@@ -215,9 +252,13 @@ class Super extends CI_Controller
         $data['announcement'] = $this->admin->detailPengumuman($id);
 
         // rules
-        $this->form_validation->set_rules('title', 'Title', 'required|trim');
-        $this->form_validation->set_rules('description', 'Description', 'required|trim');
-        // $this->form_validation->set_rules('file_lampiran[]', 'Document');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim', ['required' => 'Judul harus diisi!']);
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim', ['required' => 'Keterangan harus diisi!']);
+        for ($i = 1; $i <= 10; $i++) {
+            if (!empty($_FILES['file_lampiran' . $i]['name'])) {
+                $this->form_validation->set_rules('file_lampiran' . $i, 'File');
+            }
+        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -228,7 +269,7 @@ class Super extends CI_Controller
         } else {
             $this->admin->updatePengumuman();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been updated!</div>');
+            Data pengumuman berhasil diubah!</div>');
             redirect('super/pengumuman');
         }
     }
@@ -237,7 +278,7 @@ class Super extends CI_Controller
     {
         $this->admin->deletePengumuman($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data has been deleted!</div>');
+        Data pengumuman berhasil dihapus!</div>');
         redirect('super/pengumuman');
     }
 
@@ -255,7 +296,7 @@ class Super extends CI_Controller
 
     public function arsip()
     {
-        $data['title'] = 'Pengarsipan';
+        $data['title'] = 'Berita';
         $data['user'] = $this->admin->getDosenByNidn();
         $data['arsip'] = $this->admin->getAllArsip();
         $this->load->view('templates/header', $data);
@@ -268,18 +309,18 @@ class Super extends CI_Controller
     // add arsip
     public function addArsip()
     {
-        $data['title'] = 'Tambah Arsip';
+        $data['title'] = 'Tambah Berita';
         $data['user'] = $this->admin->getDosenByNidn();
         $data['dosen'] = $this->admin->getAllDosen();
 
-        $this->form_validation->set_rules('title', 'Judul', 'required|trim');
-        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim');
-        $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim', ['required' => 'Judul harus diisi!']);
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim', ['required' => 'Keterangan harus diisi!']);
+        $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required', ['required' => 'Dosen harus dipilih!']);
         for ($i = 2; $i <= 10; $i++) {
             if (!empty($_FILES['userfile' . $i]['name'])) {
                 $this->form_validation->set_rules('userfile' . $i, 'File');
             } else if (empty($_FILES['userfile1']['name'])) {
-                $this->form_validation->set_rules('userfile1', 'File', 'required');
+                $this->form_validation->set_rules('userfile1', 'File', 'required', ['required' => 'Lampiran harus diisi!']);
             }
         }
 
@@ -293,7 +334,7 @@ class Super extends CI_Controller
         } else {
             $this->admin->createArsip();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data arsip has been created!</div>');
+            Data berita berhasil dibuat!</div>');
             redirect('super/arsip');
         }
     }
@@ -303,21 +344,28 @@ class Super extends CI_Controller
     {
         $this->admin->deleteArsip($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data has been deleted!</div>');
+        Data berita berhasil dihapus!</div>');
         redirect('super/arsip');
     }
 
     // edit arsip
     public function editArsip($id = null)
     {
-        $data['title'] = 'Edit Pengarsipan';
+        $data['title'] = 'Edit Berita';
         $data['user'] = $this->admin->getDosenByNidn();
         $data['dosen'] = $this->admin->getAllDosen();
         $data['arsip'] = $this->admin->getArsipFile($id);
 
-        $this->form_validation->set_rules('title', 'Judul', 'trim');
-        $this->form_validation->set_rules('description', 'Keterangan', 'trim');
-        $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required');
+        $this->form_validation->set_rules('title', 'Judul', 'required|trim', ['required' => 'Judul harus diisi!']);
+        $this->form_validation->set_rules('description', 'Keterangan', 'required|trim', ['required' => 'Keterangan harus diisi!']);
+        $this->form_validation->set_rules('id_dosen[]', 'Dosen', 'required', ['required' => 'Dosen harus dipilih!']);
+        for ($i = 2; $i <= 10; $i++) {
+            if (!empty($_FILES['userfile' . $i]['name'])) {
+                $this->form_validation->set_rules('userfile' . $i, 'File');
+            } else if (empty($_FILES['userfile1']['name'])) {
+                $this->form_validation->set_rules('userfile1', 'File');
+            }
+        }
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -328,7 +376,7 @@ class Super extends CI_Controller
         } else {
             $this->admin->updateArsip();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data has been updated!</div>');
+            Data berita berhasil diubah!</div>');
             redirect('super/arsip');
         }
     }
@@ -339,10 +387,22 @@ class Super extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nidn' => $this->session->userdata('nidn')])->row_array();
 
         // rules
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('address', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('telephone', 'Telephone', 'required|trim|numeric');
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim', ['required' => 'Nama harus diisi!']);
+        $this->form_validation->set_rules('pob', 'Tempat Lahir', 'required|trim', ['required' => 'Tempat Lahir harus diisi!',]);
+        $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required|trim', ['required' => 'Tanggal Lahir harus diisi!',]);
+        $this->form_validation->set_rules('address', 'Alamat', 'required|trim', ['required' => 'Alamat harus diisi!',]);
+        $this->form_validation->set_rules('gender', 'Jenis Kelamin', 'required|trim', ['required' => 'Jenis Kelamin harus diisi!',]);
+        $this->form_validation->set_rules('religion', 'Agama', 'required|trim', ['required' => 'Agama harus diisi!',]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Email harus diisi!',
+            'valid_email' => 'Email tidak valid!'
+        ]);
+        $this->form_validation->set_rules('telephone', 'Nomor HP', 'required|trim|numeric|min_length[11]|max_length[13]', [
+            'required' => 'Nomor HP harus diisi!',
+            'numeric' => 'Nomor HP harus angka!',
+            'min_length' => 'NIDN minimal 11 digit!',
+            'max_length' => 'NIDN maksimal 13 digit!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             // template view / tampilan
@@ -364,9 +424,17 @@ class Super extends CI_Controller
         $data['title'] = 'Ganti Password';
         $data['user'] = $this->db->get_where('user', ['nidn' => $this->session->userdata('nidn')])->row_array();
 
-        $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim');
-        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[3]|matches[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[3]|matches[new_password1]');
+        $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim', ['required' => 'Password Saat Ini harus diisi!',]);
+        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[8]|matches[new_password2]', [
+            'required' => 'Password Baru harus diisi!',
+            'min_length' => 'Password Baru minimal 8 karakter!',
+            'matches' => 'Password Baru tidak sama dengan Konfirmasi Password!'
+        ]);
+        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[8]|matches[new_password1]', [
+            'required' => 'Konfirmasi Password Baru harus diisi!',
+            'min_length' => 'Password Baru minimal 8 karakter!',
+            'matches' => 'Konfirmasi Password Baru tidak sama dengan Password Baru!',
+        ]);
 
         if ($this->form_validation->run() == false) {
             // template view / tampilan
@@ -381,12 +449,12 @@ class Super extends CI_Controller
 
             if (!password_verify($current_password, $data['user']['password'])) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Wrong current password!</div>');
+                Password saat ini salah!</div>');
                 redirect('super/changepassword');
             } else {
                 if ($current_password == $new_password) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                        New password cannot be the same as current password!</div>');
+                    Password baru harus tidak sama dengan password saat ini!</div>');
                     redirect('super/changepassword');
                 } else {
                     // password ok
@@ -397,7 +465,7 @@ class Super extends CI_Controller
                     $this->db->update('user');
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                        Password changed!</div>');
+                    Password berhasil diganti!</div>');
                     redirect('super/changepassword');
                 }
             }

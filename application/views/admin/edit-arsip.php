@@ -10,13 +10,13 @@
                     <input type="hidden" name="id" value="<?= $arsip['id_file']; ?>">
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul Arsip" value="<?= $arsip['title']; ?>">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Judul Arsip" value="<?= empty($arsip['title']) ? set_value('title') : $arsip['title']; ?>">
                         <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Keterangan</label>
-                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan"><?= $arsip['description']; ?></textarea>
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan"><?= empty($arsip['description']) ? set_value('description') : $arsip['description']; ?></textarea>
                         <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
@@ -31,21 +31,26 @@
                     <div class="form-group">
                         <?php for ($i = 1; $i <= 10; $i++) : ?>
                             <?php if (!empty($arsip['userfile' . $i])) : ?>
-                                <h6>File <?= $i; ?> : <?= $arsip['userfile' . $i]; ?></h6>
+                                <h6>Lampiran File <?= $i; ?> : <?= $arsip['userfile' . $i]; ?></h6>
                             <?php endif; ?>
                         <?php endfor; ?>
                     </div>
 
                     <div class="form-group">
-                        <label for="userfile1">File 1</label>
+                        <label for="userfile1">Lampiran File 1</label>
                         <input type="file" class="form-control-file" id="userfile1" name="userfile1">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <button type="button" class="btn btn-success" id="add" name="add">Tambah Lampiran</button>
-                    <small class="text-secondary pl-3">Max 10 file</small>
+                    <small class="text-secondary pl-3">Maksimal jumlah 10 file</small>
                 </div>
+
+                <?php
+                $str = $arsip['name'];
+                $arr = explode(',', $str);
+                ?>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,7 +70,7 @@
 
                                 <?php foreach ($dosen as $d) : ?>
                                     <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="id_dosen[]" name="id_dosen[]" value="<?= $d['id_user']; ?>">
+                                        <input type="checkbox" class="form-check-input" id="id_dosen[]" name="id_dosen[]" value="<?= $d['id_user']; ?>" <?php in_array($d['name'], $arr) ? print_r('checked') : ''; ?>>
                                         <label class="form-check-label" for="dosen"><?= $d['name']; ?></label>
                                     </div>
                                 <?php endforeach; ?>
@@ -78,7 +83,7 @@
                 </div>
 
                 <div class="class-footer">
-                    <button type="submit" class="btn btn-primary">Ubah Arsip</button>
+                    <button type="submit" class="btn btn-primary">Ubah Berita</button>
                     <a href="<?= base_url('admin/arsip'); ?>" class="btn btn-secondary">Kembali</a>
                 </div>
             </form>

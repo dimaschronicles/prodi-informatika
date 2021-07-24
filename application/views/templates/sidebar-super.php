@@ -60,14 +60,14 @@
                         <span>Pengumuman</span></a>
                     </li>
 
-                    <?php if ($title == "Pengarsipan") : ?>
+                    <?php if ($title == "Berita") : ?>
                         <li class="nav-item active">
                         <?php else : ?>
                         <li class="nav-item">
                         <?php endif; ?>
                         <a class="nav-link" href="<?= base_url('super/arsip'); ?>">
                             <i class="fas fa-fw fa-folder"></i>
-                            <span>Pengarsipan</span></a>
+                            <span>Berita</span></a>
                         </li>
 
                         <!-- Divider -->

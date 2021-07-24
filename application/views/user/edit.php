@@ -47,7 +47,7 @@
                 <div class="col-sm-10">
                     <select class="form-control" id="gender" name="gender">
                         <?php $jk = $user['gender']; ?>
-                        <option value="0">-- Pilih Salah Satu --</option>
+                        <option value="0" disabled>-- Pilih Salah Satu --</option>
                         <option value="Laki-laki" <?php if ($jk == "Laki-laki") echo 'selected="selected"';  ?>>Laki-laki</option>
                         <option value="Perempuan" <?php if ($jk == "Perempuan") echo 'selected="selected"';  ?>>Perempuan</option>
                     </select>
@@ -58,7 +58,7 @@
                 <div class="col-sm-10">
                     <select class="form-control" id="religion" name="religion">
                         <?php $agama = $user['religion']; ?>
-                        <option value="0">-- Pilih Salah Satu --</option>
+                        <option value="0" disabled>-- Pilih Salah Satu --</option>
                         <option value="Islam" <?php if ($agama == "Islam") echo 'selected="selected"'; ?>>Islam</option>
                         <option value="Kristen" <?php if ($agama == "Kristen") echo 'selected="selected"'; ?>>Kristen</option>
                         <option value="Katholik" <?php if ($agama == "Katholik") echo 'selected="selected"'; ?>>Katholik</option>

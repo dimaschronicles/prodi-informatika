@@ -6,7 +6,7 @@
     <!-- Show Data Menu -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('super/addarsip'); ?>" class="m-0 btn btn-primary">Buat Arsip</a>
+            <a href="<?= base_url('super/addarsip'); ?>" class="m-0 btn btn-primary">Buat Berita</a>
         </div>
 
         <div class="card-body">

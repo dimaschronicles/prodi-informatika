@@ -29,87 +29,76 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <?php if ($title == "Data Admin") : ?>
+        <?php if ($title == "Data Dosen") : ?>
             <li class="nav-item active">
             <?php else : ?>
             <li class="nav-item">
             <?php endif; ?>
-            <a class="nav-link" href="<?= base_url('admin/adminpage'); ?>">
-                <i class="fas fa-fw fa-users-cog"></i>
-                <span>Data Admin</span></a>
+            <a class="nav-link" href="<?= base_url('admin/dosen'); ?>">
+                <i class="fas fa-fw fa-user-tie"></i>
+                <span>Data Dosen</span></a>
             </li>
 
-            <!-- Nav Item - Dashboard -->
-            <?php if ($title == "Data Dosen") : ?>
+            <?php if ($title == "Pengumuman") : ?>
                 <li class="nav-item active">
                 <?php else : ?>
                 <li class="nav-item">
                 <?php endif; ?>
-                <a class="nav-link" href="<?= base_url('admin/dosen'); ?>">
-                    <i class="fas fa-fw fa-user-tie"></i>
-                    <span>Data Dosen</span></a>
+                <a class="nav-link" href="<?= base_url('admin/pengumuman'); ?>">
+                    <i class="fas fa-fw fa-scroll"></i>
+                    <span>Pengumuman</span></a>
                 </li>
 
-                <?php if ($title == "Pengumuman") : ?>
+                <?php if ($title == "Berita") : ?>
                     <li class="nav-item active">
                     <?php else : ?>
                     <li class="nav-item">
                     <?php endif; ?>
-                    <a class="nav-link" href="<?= base_url('admin/pengumuman'); ?>">
-                        <i class="fas fa-fw fa-scroll"></i>
-                        <span>Pengumuman</span></a>
+                    <a class="nav-link" href="<?= base_url('admin/arsip'); ?>">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Berita</span></a>
                     </li>
 
-                    <?php if ($title == "Pengarsipan") : ?>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+
+                    <?php if ($title == "Edit Profil") : ?>
                         <li class="nav-item active">
                         <?php else : ?>
                         <li class="nav-item">
                         <?php endif; ?>
-                        <a class="nav-link" href="<?= base_url('admin/arsip'); ?>">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Pengarsipan</span></a>
+                        <a class="nav-link" href="<?= base_url('admin/editprofileadmin'); ?>">
+                            <i class="fas fa-fw fa-user-edit"></i>
+                            <span>Edit Profil</span></a>
                         </li>
 
-                        <!-- Divider -->
-                        <hr class="sidebar-divider my-0">
-
-                        <?php if ($title == "Edit Profil") : ?>
+                        <?php if ($title == "Ganti Password") : ?>
                             <li class="nav-item active">
                             <?php else : ?>
                             <li class="nav-item">
                             <?php endif; ?>
-                            <a class="nav-link" href="<?= base_url('admin/editprofileadmin'); ?>">
-                                <i class="fas fa-fw fa-user-edit"></i>
-                                <span>Edit Profil</span></a>
+                            <a class="nav-link" href="<?= base_url('admin/changepassword'); ?>">
+                                <i class="fas fa-fw fa-key"></i>
+                                <span>Ganti Password</span></a>
                             </li>
 
-                            <?php if ($title == "Ganti Password") : ?>
-                                <li class="nav-item active">
-                                <?php else : ?>
-                                <li class="nav-item">
-                                <?php endif; ?>
-                                <a class="nav-link" href="<?= base_url('admin/changepassword'); ?>">
-                                    <i class="fas fa-fw fa-key"></i>
-                                    <span>Ganti Password</span></a>
-                                </li>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider">
 
-                                <!-- Divider -->
-                                <hr class="sidebar-divider">
+                            <!-- Nav Item - Charts -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+                                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                                    <span>Keluar</span></a>
+                            </li>
 
-                                <!-- Nav Item - Charts -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
-                                        <i class="fas fa-fw fa-sign-out-alt"></i>
-                                        <span>Keluar</span></a>
-                                </li>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider d-none d-md-block">
 
-                                <!-- Divider -->
-                                <hr class="sidebar-divider d-none d-md-block">
-
-                                <!-- Sidebar Toggler (Sidebar) -->
-                                <div class="text-center d-none d-md-inline">
-                                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                                </div>
+                            <!-- Sidebar Toggler (Sidebar) -->
+                            <div class="text-center d-none d-md-inline">
+                                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                            </div>
 
 </ul>
 <!-- End of Sidebar -->
